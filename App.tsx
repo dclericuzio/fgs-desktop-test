@@ -17,8 +17,8 @@ function App(): React.JSX.Element {
 
     ws.onopen = () => ws.send('CONNECT\x0Aaccept-version:1.2,1.1,1.0\x0Aheart-beat:10000,10000\x0A\x0A\x00');
 
-    ws.onclose = event => console.log('WebSocket Disconnected: ' + event);
-    ws.onerror = event => console.log('WebSocket Disconnected: ' + event);
+    ws.onclose = event => console.log('WebSocket Disconnected Close: ' + event);
+    ws.onerror = event => console.log('WebSocket Disconnected Error: ' + event);
 
     ws.onmessage = event => {
       const [c, ...data] = event?.data?.split('\x0A') || [];
